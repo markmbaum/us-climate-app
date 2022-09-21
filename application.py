@@ -22,7 +22,6 @@ ceil = lambda X: 10*np.ceil(X.max().values/10)
 
 mask = lambda X, a, b: (X.min(axis=0) < a) | (X.max(axis=0) > b)
 
-
 # %% load and set data
 
 states = np.load(fnstates)
@@ -263,9 +262,9 @@ app.layout = html.Div(
 
                         * State boundaries are drawn using [shapefiles](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html) from the US Census Bureau.
 
-                        * Montly precipitation values are capped at 20 inches. Values up to about 50 inches occur over some of the western mountains, but are rare and badly skew the colorscale for areas in a more normal range.
+                        * Monthly precipitation values are capped at 20 inches. Values up to about 50 inches occur over some of the western mountains, but are rare and badly skew the colorscale for areas in a more normal range.
 
-                        * This little app was created using [Plotly/Dash](https://dash.plotly.com/) and code is available at []().
+                        * This little app was created using [Plotly/Dash](https://dash.plotly.com/) and code is available [on GitHub](https://github.com/markmbaum/us-climate-app).
                     """,
                     style=dict(
                         fontSize=12,
@@ -303,4 +302,5 @@ def update_figure(rtmin, rtmax, rppt, dvar, dper):
 
 if __name__ == '__main__':
     app.run(port=8080)
+
 # %%
