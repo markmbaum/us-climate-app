@@ -262,7 +262,7 @@ app.layout = html.Div(
 
                         * State boundaries are drawn using [shapefiles](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html) from the US Census Bureau.
 
-                        * Monthly precipitation values are capped at 20 inches. Values up to about 50 inches occur over some of the western mountains, but are rare and badly skew the colorscale for areas in a more normal range.
+                        * Monthly precipitation values are truncated at 16 inches. Values up to about 40 inches occur over some of the western mountains, but are rare and badly skew the colorscale for areas in a more normal range.
 
                         * This little app was created using [Plotly/Dash](https://dash.plotly.com/) and code is available [on GitHub](https://github.com/markmbaum/us-climate-app).
                     """,

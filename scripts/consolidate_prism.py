@@ -55,7 +55,7 @@ for v in ['tmin', 'tmean', 'tmax']:
     prism[v] += 32
 #convert to inches
 prism['ppt'] *= 0.0393701
-prism['ppt'][prism['ppt'] > 20] = 20
+prism['ppt'][prism['ppt'] > 16] = 16
 
 #cast as DataArrays
 for k in prism:
