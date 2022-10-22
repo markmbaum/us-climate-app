@@ -102,7 +102,7 @@ def update_layout(fig):
         yaxis_title='Latitude (°)',
         plot_bgcolor='white',
         width=1250,
-        height=1250/1.8
+        height=1250/1.6
     )
     fig.update_xaxes(
         range=[lon.min(), lon.max()],
@@ -171,7 +171,7 @@ app.layout = html.Div(
             children="Where is the weather...?"
         ),
         html.H3(
-            children="An interactive map parsing weather data throughout the continental US"
+            children="An interactive map parsing weather data in the continental US"
         ),
         dcc.Graph(
             figure=fig,            
@@ -258,13 +258,13 @@ app.layout = html.Div(
                 ),
                 dcc.Markdown(
                     """
-                        * Climate data represent estimates of spatially continuous 30 year averages from the [PRISM Climate Group](https://prism.oregonstate.edu/normals/).
+                        * This little app was created using [Plotly/Dash](https://dash.plotly.com/) and code is available [on GitHub](https://github.com/markmbaum/us-climate-app).
+
+                        * Climate data represent estimates of spatially continuous 30 year averages from the [PRISM Climate Group](https://prism.oregonstate.edu/normals/), regridded from the original 621 x 1405 size to 700 x 350.
 
                         * State boundaries are drawn using [shapefiles](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html) from the US Census Bureau.
 
                         * Monthly precipitation values are truncated at 16 inches. Values up to about 40 inches occur over some of the western mountains, but are rare and badly skew the colorscale for areas in a more normal range.
-
-                        * This little app was created using [Plotly/Dash](https://dash.plotly.com/) and code is available [on GitHub](https://github.com/markmbaum/us-climate-app).
                     """,
                     style=dict(
                         fontSize=12,
