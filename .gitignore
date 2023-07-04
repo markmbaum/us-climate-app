@@ -160,5 +160,7 @@ cython_debug/
 #.idea/
 
 data/
-assets/
+app/static/
 application.zip
+arch
+.DS_Store
