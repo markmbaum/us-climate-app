@@ -11,6 +11,7 @@ from bokeh.models import (
     GeoJSONDataSource,
     ColumnDataSource,
     HoverTool,
+    WheelZoomTool,
     LinearColorMapper,
     Select,
 )
@@ -106,12 +107,10 @@ def update_month(attr, old, new):
     update(field_widget.value, new)
 
 
-# load data
+# load main data
 normals, dem, lonc, latc = load_prism()
-states = GeoJSONDataSource(geojson=load_states())
-cities = GeoJSONDataSource(geojson=load_cities())
 
-# initalization data
+# initial view of data
 z = normals[2, ...].mean(axis=0)
 source = ColumnDataSource({"x": lonc, "y": latc, "image": [z]})
 
@@ -165,7 +164,7 @@ p.contour(
 p.patches(
     "xs",
     "ys",
-    source=states,
+    source=GeoJSONDataSource(geojson=load_states()),
     fill_color="none",
     line_color="black",
 )
@@ -178,7 +177,7 @@ scatter = p.scatter(
     line_color="black",
     marker="circle",
     size=6,
-    source=cities,
+    source=GeoJSONDataSource(geojson=load_cities()),
 )
 p.add_tools(
     HoverTool(
@@ -197,14 +196,13 @@ month_widget = Select(title="Month", value=MONTHS[0], options=MONTHS, align="cen
 month_widget.on_change("value", update_month)
 
 layout = column(
-    p,
     row(
         field_widget,
         month_widget,
         align="center",
     ),
+    p,
     sizing_mode="scale_width",
-    spacing=30,
 )
 
 curdoc().add_root(layout)
