@@ -11,7 +11,6 @@ from bokeh.models import (
     GeoJSONDataSource,
     ColumnDataSource,
     HoverTool,
-    WheelZoomTool,
     LinearColorMapper,
     Select,
 )
@@ -58,6 +57,7 @@ def load_cities():
     with open(join(DATADIR, "geo", "uscities.geojson"), "r") as ifile:
         cities = ifile.read()
     return cities
+
 
 def update(field, month):
     fidx = FIELDS.index(field)
