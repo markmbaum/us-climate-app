@@ -6,4 +6,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN mkdir app
 COPY app/ app/
 
-CMD ["bokeh", "serve", "app", "--port", "8080"]
+EXPOSE 443
+
+CMD ["bokeh", "serve", "app", "--port", "443"]

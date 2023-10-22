@@ -13,6 +13,7 @@ from bokeh.models import (
     HoverTool,
     LinearColorMapper,
     Select,
+    Div,
 )
 
 DATADIR = join(dirname(__file__), "data")
@@ -195,6 +196,17 @@ field_widget.on_change("value", update_field)
 month_widget = Select(title="Month", value=MONTHS[0], options=MONTHS, align="center")
 month_widget.on_change("value", update_month)
 
+footer = Div(
+    text="""
+Climate data derived from the <a href="https://prism.oregonstate.edu/" style="color: inherit">PRISM Climate Group's</a> "normals."
+<br>
+Project source available at: <a href="https://github.com/markmbaum/us-climate-app" style="color: inherit">github.com/markmbaum/us-climate-app</a>
+    """,
+    align="center",
+    margin=35,
+)
+footer.styles = {"font-size": "small", "color": "gray", "text-align": "center"}
+
 layout = column(
     row(
         field_widget,
@@ -202,6 +214,7 @@ layout = column(
         align="center",
     ),
     p,
+    footer,
     sizing_mode="scale_width",
 )
 
